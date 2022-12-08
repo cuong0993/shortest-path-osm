@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head id="Head1"><meta charset="utf-8" /><title>
+	Location Metadata System - Location SA - Public
+</title><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <script src="~/Scripts/jquery-1.11.0.min.js" type="text/javascript"></script>
+        <script src="~/Scripts/lms.js" type="text/javascript"></script>
+        <script src="~/Scripts/moment.min.js" type="text/javascript"></script>
+
+
+        <link href="../Content/bootstrap.css" rel="stylesheet" type="text/css" /><link href="../Content/bootstrap-theme.min.css" rel="stylesheet" type="text/css" /><link href="../Content/lms.css" rel="stylesheet" type="text/css" />
+    
+
+        <!--[if lt IE 9]>  
+        <script src="~/Scripts/html5shiv.js"></script>
+        <script src="~/Scripts/respond.min.js"></script>
+        <![endif]-->
+
+       
+</head>
+
+    <body>
+        <form method="post" action="ReportMetadata.aspx" id="frmLMS" role="form">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJMTQ1OTk5NjE1D2QWAmYPZBYCAgMPZBYEZg8PFgIeC05hdmlnYXRlVXJsBR5odHRwOi8vd3d3LmxvY2F0aW9uLnNhLmdvdi5hdS9kFgJmDw8WBB4ISW1hZ2VVcmwFLn4vSW1hZ2VzL0xPQ1NBMDAxX0xvZ29fU2NyZWVuX1YyX1JHQl9DX3NtbC5qcGceDUFsdGVybmF0ZVRleHQFC0xvY2F0aW9uIFNBZGQCAQ9kFggCAQ8PFgIeBFRleHQFBVJvYWRzZGQCAw88KwARAgEQFgAWABYADBQrAABkAgUPDxYCHgdWaXNpYmxlZ2QWDgIBDzwrAAoBAA8WBB4LXyFEYXRhQm91bmRnHgtfIUl0ZW1Db3VudAIBZBYCZg9kFgZmDw8WAh8EaGRkAgEPZBYCZg9kFgJmDxUDAzU1OAVSb2Fkc84BRGF0YSBBdXRob3JpdHk6IERlcGFydG1lbnQgZm9yIEVudmlyb25tZW50IGFuZCBXYXRlcjxCUiAvPkpvaW50IEN1c3RvZGlhbjogRGVwYXJ0bWVudCBvZiBQbGFubmluZywgVHJhbnNwb3J0IGFuZCBJbmZyYXN0cnVjdHVyZTxCUiAvPkRhdGEgUHJvdmlkZXI6IERlcGFydG1lbnQgb2YgUGxhbm5pbmcsIFRyYW5zcG9ydCBhbmQgSW5mcmFzdHJ1Y3R1cmU8QlIgLz5kAgIPDxYCHwRoZGQCAw88KwAKAQAPFgQfBWcfBgIBZBYCZg9kFgZmDw8WAh8EaGRkAgEPZBYCZg9kFgJmDxUCjwJUaGUgZGF0YXNldCByZXByZXNlbnRzIG5hdmlnYWJsZSByb2FkcywgaW5jbHVkaW5nIHB1YmxpYyBhbmQgcHJpdmF0ZSBhY2Nlc3Mgcm9hZHMgYW5kIHRyYWNrcy4gQSBzZXBhcmF0ZSBkYXRhIGxheWVyIHN0b3JlcyAndW5mb3JtZWQnIERDREIgY2VudHJlbGluZXMgd2hpY2ggZG8gbm90IHJlcHJlc2VudCBuYXZpZ2FibGUgcm9hZHMuIEEgbGltaXRlZCBudW1iZXIgb2YgYXNzb2NpYXRlZCBmZWF0dXJlcyBhcmUgc3RvcmVkIHNlcGFyYXRlbHkgYXMgcG9pbnQgZmVhdHVyZXMumAFVc2VkIHRvIHByb3ZpZGUgYSBzdGF0ZXdpZGUgc3BhdGlhbCBkYXRhIGNvdmVyYWdlIG9mIHJvYWRzLiAgQ2FuIGJlIHVzZWQgYXMgYSBmcmFtZXdvcmsgbGF5ZXIgZm9yIHNwYXRpYWwgYW5hbHlzaXMgYW5kIG1hcHBpbmcgd2l0aGluIFNvdXRoIEF1c3RyYWxpYS4NCmQCAg8PFgIfBGhkZAIFDzwrAAoBAA8WBB8FZx8GAgFkFgJmD2QWBmYPDxYCHwRoZGQCAQ9kFgJmD2QWAmYPFQPBAlRoZSBkYXRhc2V0IGhhcyBiZWVuIGNvbXBpbGVkIGZyb20gYSBjb21iaW5hdGlvbiBvZiBEQ0RCIHJvYWQgY2VudHJlbGluZSBkYXRhIGFuZCBUb3BvZ3JhcGhpYyByb2FkIGRhdGEuIEluIGdlbmVyYWwsIHB1YmxpYyByb2FkIGFsaWdubWVudHMgaGF2ZSBiZWVuIHNvdXJjZWQgZnJvbSB0aGUgRENEQiBhbmQgcHJpdmF0ZSByb2FkcyBhbmQgdHJhY2tzIGZyb20gdGhlIFRvcG9ncmFwaGljIGRhdGFzZXQuIFJvYWQgZGF0YSBpbiB0aGUgcGFzdG9yYWwgcmVnaW9ucyBvZiB0aGUgU3RhdGUgaGFzIGJlZW4gc291cmNlZCBmcm9tIEdlb3NjaWVuY2UgQXVzdHJhbGlhLihEYXRhc2V0IGlzIGNvbXBsZXRlIG92ZXIgdGhlIHdob2xlIFN0YXRl+QJBY2N1cmFjeSBvZiByb2FkIGFsaWdubWVudHMgdmFyaWVzIHRocm91Z2hvdXQgdGhlIGNvdmVyYWdlIGRlcGVuZGluZyBvbiBtZXRob2Qgb2YgY2FwdHVyZS4gSW4gZ2VuZXJhbCwgcm9hZHMgY2FwdHVyZWQgdGhyb3VnaCBEQ0RCIHByb2Nlc3NlcyBpbiB1cmJhbiBhcmVhcyBhcmUgZ2VuZXJhbGx5IHdpdGhpbiArLy0gNSBtZXRyZXMgb2YgdGhlaXIgdHJ1ZSBwb3NpdGlvbi4gSW4gcnVyYWwgYXJlYXMgdGhlIGFjY3VyYWN5IGlzIGdlbmVyYWxseSB3aXRoaW4gKy8tIDI1bWV0cmVzLiBJbiBwYXN0b3JhbCByZWdpb25zIHNvdXJjZWQgZnJvbSBHZW9zY2llbmNlIEF1c3RyYWxpYSB0aGUgYWNjdXJhY3kg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FgpmDw8WAh8DBQVSb2Fkc2RkAgEPDxYCHwMFCEZBX0NsYXNzZGQCAg8PFgIfAwUGJm5ic3A7ZGQCAw8PFgIfAwUMTG9uZyBJbnRlZ2VyZGQCBA8PFgIfAwVMRmlyZSBBY2Nlc3MgdHJhY2sgY2xhc3NpZmljYXRpb24gZWcuIDEgTWFqb3IsIDIgU3RhbmRhcmQsIDMgTWlub3IsIDQgU2VydmljZWRkAgsPZBYKZg8PFgIfAwUFUm9hZHNkZAIBDw8WAh8DBQlGQV9Tb3VyY2VkZAICDw8WAh8DBQYmbmJzcDtkZAIDDw8WAh8DBQxMb25nIEludGVnZXJkZAIEDw8WAh8DBVJTb3VyY2Ugb2YgRmlyZSBBY2Nlc3MgY2xhc3MgaW5mb3JtYXRpb24gZWcuIDEgREVXLCAyIFNBIFdhdGVyLCAzIEZvcmVzdHJ5U0EsIDQgQ0ZTZGQCDA9kFgpmDw8WAh8DBQVSb2Fkc2RkAgEPDxYCHwMFDEZBX0F1ZGl0RGF0ZWRkAgIPDxYCHwMFBiZuYnNwO2RkAgMPDxYCHwMFBERhdGVkZAIEDw8WAh8DBTpDdXJyZW5jeSBvZiBGaXJlIEFjY2VzcyAgY2xhc3MgaW5mb3JtYXRpb24gKGRhdGUgb2YgYXVkaXQpZGQCDQ9kFgpmDw8WAh8DBQVSb2Fkc2RkAgEPDxYCHwMFDUNhcHR1cmVTb3VyY2VkZAICDw8WAh8DBQYmbmJzcDtkZAIDDw8WAh8DBQxMb25nIEludGVnZXJkZAIEDw8WAh8DBSBNZXRhZGF0YTogU291cmNlIG1hcHBpbmcgcHJvZ3JhbWRkAg4PZBYKZg8PFgIfAwUFUm9hZHNkZAIBDw8WAh8DBQ1DYXB0dXJlTWV0aG9kZGQCAg8PFgIfAwUGJm5ic3A7ZGQCAw8PFgIfAwUMTG9uZyBJbnRlZ2VyZGQCBA8PFgIfAwUyTWV0YWRhdGE6IG1ldGhvZCBvZiBkYXRhIGNhcHR1cmUgaWUgZGlnaXRpemVkIGV0Yy5kZAIPD2QWCmYPDxYCHwMFBVJvYWRzZGQCAQ8PFgIfAwUNRmVhdHVyZVNvdXJjZWRkAgIPDxYCHwMFBiZuYnNwO2RkAgMPDxYCHwMFDExvbmcgSW50ZWdlcmRkAgQPDxYCHwMFNU1ldGFkYXRhOiBpbmZvcm1hdGlvbiBzb3VyY2UgdXNlZCB0byBpZGVudGlmeSBmZWF0dXJlZGQCEA9kFgpmDw8WAh8DBQVSb2Fkc2RkAgEPDxYCHwMFDkZlYXR1cmVSZWxEYXRlZGQCAg8PFgIfAwUGJm5ic3A7ZGQCAw8PFgIfAwUERGF0ZWRkAgQPDxYCHwMFPyBNZXRhZGF0YTogQ3VycmVuY3kgb2YgdGhlIGZlYXR1cmUgLyByZWZlcmVuY2Ugc291cmNlIGN1cnJlbmN5IGRkAhEPZBYKZg8PFgIfAwUFUm9hZHNkZAIBDw8WAh8DBRBBdHRyaWJ1dGVSZWxEYXRlZGQCAg8PFgIfAwUGJm5ic3A7ZGQCAw8PFgIfAwUERGF0ZWRkAgQPDxYCHwMFKiBNZXRhZGF0YTogQ3VycmVuY3kgb2YgdGhlIGF0dHJpYnV0ZSBkYXRhIGRkAhIPZBYKZg8PFgIfAwUFUm9hZHNkZAIBDw8WAh8DBQlGQV9NZXRob2RkZAICDw8WAh8DBQYmbmJzcDtkZAIDDw8WAh8DBQxMb25nIEludGVnZXJkZAIEDw8WAh8DBWpNZXRob2Qgb2YgYXVkaXRpbmcgRmlyZSBBY2Nlc3MgY2xhc3MgaW5mb3JtYXRpb24gZWcuIDMgRGVza3RvcCBBdWRpdCwgMiBEcml2ZS10aHJvdWdoIEF1ZGl0LCAxIEZpZWxkIEF1ZGl0ZGQCEw9kFgpmDw8WAh8DBQVSb2Fkc2RkAgEPDxYCHwMFClR5cGVTdWZmaXhkZAICDw8WAh8DBQYmbmJzcDtkZAIDDw8WAh8DBQR0ZXh0ZGQCBA8PFgIfAwUvU3VmZml4IHBvcnRpb24gb2Ygcm9hZCBuYW1lLCBlZyBzbWl0aCByb2FkIEVBU1RkZAIUD2QWCmYPDxYCHwMFBVJvYWRzZGQCAQ8PFgIfAwUJRkFfU3RhdHVzZGQCAg8PFgIfAwUGJm5ic3A7ZGQCAw8PFgIfAwUEdGV4dGRkAgQPDxYCHwMFP1N0YXR1cyBvZiBGaXJlIEFjY2VzcyBjbGFzcyBpbmZvcm1hdGlvbiAgZWcuIEluIFByZXAsIFZhbGlkYXRlZGRkAhUPZBYKZg8PFgIfAwUFUm9hZHNkZAIBDw8WAh8DBRFGQV9WYWxpZGF0aW9uRGF0ZWRkAgIPDxYCHwMFBiZuYnNwO2RkAgMPDxYCHwMFBERhdGVkZAIEDw8WAh8DBTxDdXJyZW5jeSBvZiBGaXJlIEFjY2VzcyBjbGFzcyBpbmZvcm1hdGlvbiAoZGF0ZSBvZiBzaWduLW9mZilkZAIWD2QWCmYPDxYCHwMFBVJvYWRzZGQCAQ8PFgIfAwULUm9hZFVzZVR5cGVkZAICDw8WAh8DBQYmbmJzcDtkZAIDDw8WAh8DBQxMb25nIEludGVnZXJkZAIEDw8WAh8DBUhSb2FkIFVzZXIgYWNjZXNzIHR5cGUNCjEgUHVibGljLCAyIEF1dGhvcmlzZWQsIDMgUHJpdmF0ZSwgNCBSZXN0cmljdGVkDQpkZAIXD2QWCmYPDxYCHwMFBVJvYWRzZGQCAQ8PFgIfAwUQUm9hZFVzZUF1dGhvcml0eWRkAgIPDxYCHwMFBiZuYnNwO2RkAgMPDxYCHwMFDExvbmcgSW50ZWdlcmRkAgQPDxYCHwMFtgEgTWFpbnRlbmFuY2UgYXV0aG9yaXR5IG9yIGVudGl0eSBhdXRob3Jpc2luZyB1c2VyIGFjY2Vzcw0KMSBMR0EsIDIgU0FHOiBTQSBXYXRlciwgMyBTQUc6IEZvcmVzdHJ5IFNBLCA0IFNBRzogREVILCA1IFByaXZhdGU6IEdlbmVyYWwsIDYgRkVEOiBEUFRJLCA3IFNBRzogRFBUSSwgOCBGRUQ6IERlcHQgb2YgRGVmZW5jZWRkAhgPZBYKZg8PFgIfAwUFUm9hZHNkZAIBDw8WAh8DBQdSb2FkX0lkZGQCAg8PFgIfAwUGJm5ic3A7ZGQCAw8PFgIfAwUMTG9uZyBJbnRlZ2VyZGQCBA8PFgIfAwUcIExpbmsgdG8gUm9hZCBOYW1lIFJlZ2lzdGVyIGRkAhkPZBYKZg8PFgIfAwUFUm9hZHNkZAIBDw8WAh8DBQdPbmVfV2F5ZGQCAg8PFgIfAwUGJm5ic3A7ZGQCAw8PFgIfAwUEdGV4dGRkAgQPDxYCHwMFWEluZGljYXRpb24gb2YgdGhlIGRpcmVjdGlvbiBvZiB0cmF2ZWwgcGVybWl0dGVkIGFsb25nIHRoZSByb2FkLiAoaWUuIHR3byB3YXkgb3Igb25lIHdheSlkZAIaD2QWCmYPDxYCHwMFBVJvYWRzZGQCAQ8PFgIfAwUGRl9FbGV2ZGQCAg8PFgIfAwUGJm5ic3A7ZGQCAw8PFgIfAwUNc2hvcnQgaW50ZWdlcmRkAgQPDxYCHwMF6QFSZWxhdGVkIHRvIHRoZSBzdGFydCBub2RlIHRvIGluZGljYXRlIGEgcmVsYXRpdmUgZWxldmF0aW9uIGluIHJlbGF0aW9uIHRvIGNvbm5lY3Rpbmcgc2VnbWVudHMuIFVzZWQgdG8gaW5kaWNhdGUgYSBncmFkZSBzZXBlcmF0aW9uIGF0IHRoZSBlbmQgcG9pbnQuIENvbm5lY3RlZCBzZWdtZW50cyB3aXRoIHRoZSBzYW1lIEZfRUxFViAvIFRfRUxFViBhdCB0aGUgcG9pbnQgYXJlIGF0IHRoZSBzYW1lIGdyYWRlLmRkAhsPZBYKZg8PFgIfAwUFUm9hZHNkZAIBDw8WAh8DBQZUX0VsZXZkZAICDw8WAh8DBQYmbmJzcDtkZAIDDw8WAh8DBQ1zaG9ydCBpbnRlZ2VyZGQCBA8PFgIfAwXoAVJlbGF0ZWQgdG8gdGhlIHN0YXJ0IG5vZGUgdG8gaW5kaWNhdGUgYSByZWxhdGl2ZSBlbGV2YXRpb24gaW4gcmVsYXRpb24gdG8gY29ubmVjdGVkIHNlZ21lbnRzLiBVc2VkIHRvIGluZGljYXRlIGEgZ3JhZGUgc2VwZXJhdGlvbiBhdCB0aGUgZW5kIHBvaW50LiBDb25uZWN0ZWQgc2VnbWVudHMgd2l0aCB0aGUgc2FtZSBGX0VMRVYgLyBUX0VMRVYgYXQgdGhlIHBvaW50IGFyZSBhdCB0aGUgc2FtZSBncmFkZS5kZAIcD2QWCmYPDxYCHwMFBVJvYWRzZGQCAQ8PFgIfAwUMQ1JSU19Sb2FkX05vZGQCAg8PFgIfAwUGJm5ic3A7ZGQCAw8PFgIfAwUEdGV4dGRkAgQPDxYCHwMFXlVuaXF1ZSBpZGVudGlmaWVyIGZvciBhIHJvYWQgYXMgZGVmaW5lZCBieSBEUFRJIGZvciByb2FkcyBtYWludGFpbmVkIGJ5IG9yIG9mIGludGVyZXN0IHRvIERQVElkZAIdD2QWCmYPDxYCHwMFBVJvYWRzZGQCAQ8PFgIfAwUIQ1dZX0NvZGVkZAICDw8WAh8DBQYmbmJzcDtkZAIDDw8WAh8DBQR0ZXh0ZGQCBA8PFgIfAwUpU2lkZS8gQ2FycmlhZ2V3YXkgZm9yIHRoZSBkZXNpZ25hdGVkIHJvYWRkZAIeD2QWCmYPDxYCHwMFBVJvYWRzZGQCAQ8PFgIfAwUMVGFyc19Sb2FkX05vZGQCAg8PFgIfAwUGJm5ic3A7ZGQCAw8PFgIfAwUEdGV4dGRkAgQPDxYCHwMFYiBVbmlxdWUgaWRlbnRpZmllciBmb3IgYSByb2FkIGFzIGRlZmluZWQgYnkgRFBUSSBmb3IgcmVjb3JkaW5nIGNyYXNoZXMgaW4gVHJhZmZpYyBBY2NpZGVudCBTeXN0ZW0gZGQCHw9kFgpmDw8WAh8DBQVSb2Fkc2RkAgEPDxYCHwMFDFN1YnVyYklkTGVmdGRkAgIPDxYCHwMFBiZuYnNwO2RkAgMPDxYCHwMFDExvbmcgSW50ZWdlcmRkAgQPDxYCHwMFJlN1YnVyYiB0byB0aGUgbGVmdCBvZiB0aGUgcm9hZCBzZWdtZW50ZGQCIA9kFgpmDw8WAh8DBQVSb2Fkc2RkAgEPDxYCHwMFDVN1YnVyYklkUmlnaHRkZAICDw8WAh8DBQYmbmJzcDtkZAIDDw8WAh8DBQxMb25nIEludGVnZXJkZAIEDw8WAh8DBSdTdWJ1cmIgdG8gdGhlIHJpZ2h0IG9mIHRoZSByb2FkIHNlZ21lbnRkZAIhD2QWCmYPDxYCHwMFBVJvYWRzZGQCAQ8PFgIfAwUMUGVyc2lzdGVudElEZGQCAg8PFgIfAwUGJm5ic3A7ZGQCAw8PFgIfAwUMTG9uZyBJbnRlZ2VyZGQCBA8PFgIfAwUZVW5pcXVlIGZlYXR1cmUgaWRlbnRpZmllcmRkAiIPDxYCHwRoZGQCDw88KwAKAQAPFgQfBWcfBgIBZBYCZg9kFgZmDw8WAh8EaGRkAgEPZBYCZg9kFgJmDxUFM0RlcGFydG1lbnQgZm9yIEVudmlyb25tZW50IGFuZCBXYXRlcjxCUj5JbmZvcm1hdGlvbhBHUE8gQm94IDEwNDc8QlI+CEFERUxBSURFB1NBIDUwMDEXREVXTlIuTWFwbGFuZEBzYS5nb3YuYXVkAgIPDxYCHwRoZGQCBw8PFgIfBGhkFhoCAQ88KwAKAGQCAw88KwAKAGQCBQ88KwAKAGQCBw88KwAKAGQCCQ88KwAKAGQCCw88KwAKAGQCDw88KwARAgEQFgAWABYADBQrAABkAhMPPCsAEQIBEBYAFgAWAAwUKwAAZAIVDzwrAAoAZAIXDzwrAAoAZAIZDzwrAAoAZAIdDzwrABECARAWABYAFgAMFCsAAGQCHw88KwAKAGQYFQUgY3RsMDAkTWFpbkNvbnRlbnQkZnZEYXRhUHJvdmlkZXIPZ2QFH2N0bDAwJE1haW5Db250ZW50JGZ2RGVzY3JpcHRpb24PFCsAB2RkZGRkFgACAWQFHGN0bDAwJE1haW5Db250ZW50JGZ2Q2l0YXRpb24PFCsAB2RkZGRkFgACAWQFGmN0bDAwJE1haW5Db250ZW50JGd2VGFibGVzD2dkBRtjdGwwMCRNYWluQ29udGVudCRmdlF1YWxpdHkPFCsAB2RkZGRkFgACAWQFG2N0bDAwJE1haW5Db250ZW50JGd2RGF0Tm90ZQ9nZAUdY3RsMDAkTWFpbkNvbnRlbnQkZnZHZW9FeHRlbnQPFCsAB2RkZGRkFgACAWQFJWN0bDAwJE1haW5Db250ZW50JGZ2U2VjdXJpdHlMaWNlbnNpbmcPZ2QFH2N0bDAwJE1haW5Db250ZW50JGd2RGF0YXNldExpc3QPZ2QFGmN0bDAwJE1haW5Db250ZW50JGZ2RXh0ZW50D2dkBSBjdGwwMCRNYWluQ29udGVudCRmdkRlc2NyaXB0aW9uMg9nZAUbY3RsMDAkTWFpbkNvbnRlbnQkZnZEYXRhc2V0D2dkBRpjdGwwMCRNYWluQ29udGVudCRmdlN0YXR1cw9nZAUhY3RsMDAkTWFpbkNvbnRlbnQkZnZEYXRhQXV0aG9yaXR5D2dkBR5jdGwwMCRNYWluQ29udGVudCRndkF0dHJpYnV0ZXMPPCsADAEIAgFkBRpjdGwwMCRNYWluQ29udGVudCRndkZpZWxkcw9nZAUbY3RsMDAkTWFpbkNvbnRlbnQkZnZDb250YWN0DxQrAAdkZGRkZBYAAgFkBSFjdGwwMCRNYWluQ29udGVudCRmdkRhdGFzZXRTdGF0dXMPFCsAB2RkZGRkFgACAWQFJGN0bDAwJE1haW5Db250ZW50JGZ2UmVsYXRlZFByb2R1Y3RzMg9nZAUmY3RsMDAkTWFpbkNvbnRlbnQkZnZKb2ludERhdGFBdXRob3JpdHkPZ2QFI2N0bDAwJE1haW5Db250ZW50JGZ2UmVsYXRlZFByb2R1Y3RzD2dkr782+kE3ko9g2cY5RJGEncjbjws=" />
+</div>
+
+            <header>
+                <div class="container">
+                    
+                    <div class="row">
+                        <div id="dpti-lms-head-container" class="small col-sm-12">
+                            <div id="logo">
+                                <a id="linkLogoURL" href="http://www.location.sa.gov.au/"><img id="imgReportLogo" src="../Images/LOCSA001_Logo_Screen_V2_RGB_C_sml.jpg" alt="Location SA" /></a>
+                                    </div>
+
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container">        
+               
+
+    <h3><span id="MainContent_lblDatasetName">Roads</span></h3>
+
+    <div>
+
+</div>
+
+    <div id="MainContent_pnlPublic">
+	
+
+        <table cellspacing="0" id="MainContent_fvCitation" style="border-collapse:collapse;">
+		<tr>
+			<td colspan="2">
+
+                <table>
+                    <tr>
+                        <td class="columnlabel">Dataset Number</td><td class="datatext">558</td>
+                    </tr>
+                    <tr>
+                        <td class="columnlabel">Dataset Title</td><td class="datatext">Roads</td>
+                    </tr>
+                    <tr>
+                        <td class="columnlabel">Custodian</td><td class="datatext">Data Authority: Department for Environment and Water<BR />Joint Custodian: Department of Planning, Transport and Infrastructure<BR />Data Provider: Department of Planning, Transport and Infrastructure<BR /></td>
+                    </tr>
+                </table>
+            </td>
+		</tr>
+	</table>
+
+
+
+        <table cellspacing="0" id="MainContent_fvDescription" style="border-collapse:collapse;">
+		<tr>
+			<td colspan="2">
+                <h4 class="divider">Description</h4>
+                <table> 
+                    <tr>
+                        <td class="columnlabel">Description</td><td class="datatext">The dataset represents navigable roads, including public and private access roads and tracks. A separate data layer stores 'unformed' DCDB centrelines which do not represent navigable roads. A limited number of associated features are stored separately as point features.</td>
+                    </tr>
+                    <tr>
+                        <td class="columnlabel">Usage</td><td class="datatext">Used to provide a statewide spatial data coverage of roads.  Can be used as a framework layer for spatial analysis and mapping within South Australia.
+</td>
+                    </tr>
+                </table>
+            </td>
+		</tr>
+	</table>
+
+        <table cellspacing="0" id="MainContent_fvQuality" style="border-collapse:collapse;">
+		<tr>
+			<td colspan="2">
+                <h4 class="divider">Data Quality</h4>
+                <table>
+                    <tr>
+                        <td class="columnlabel">Lineage</td><td class="datatext">The dataset has been compiled from a combination of DCDB road centreline data and Topographic road data. In general, public road alignments have been sourced from the DCDB and private roads and tracks from the Topographic dataset. Road data in the pastoral regions of the State has been sourced from Geoscience Australia.</td>
+                    </tr>
+                    <tr>
+                        <td class="columnlabel">Completeness</td><td class="datatext">Dataset is complete over the whole State</td>
+                    </tr>
+                    <tr>
+                        <td class="columnlabel">Positional Accuracy</td><td class="datatext">Accuracy of road alignments varies throughout the coverage depending on method of capture. In general, roads captured through DCDB processes in urban areas are generally within +/- 5 metres of their true position. In rural areas the accuracy is generally within +/- 25metres. In pastoral regions sourced from Geoscience Australia the accuracy is of the order of +/- 125 metres.</td>
+                    </tr>
+
+                </table>
+            </td>
+		</tr>
+	</table>
+
+        <table cellspacing="0" id="MainContent_fvGeoExtent" style="border-collapse:collapse;">
+		<tr>
+			<td colspan="2">
+                <h4 class="divider">Geographic Extent</h4>
+                <table>
+                    <tr>
+                        <td class="columnlabel">Extent Name</td><td class="datatext">South Australia</td>
+                    </tr>
+                    <tr>
+                        <td class="columnlabel">Min Easting or Longitude</td><td class="datatext">129</td>
+                    </tr>
+                    <tr>
+                        <td class="columnlabel">Min Northing or Latitude</td><td class="datatext">-38.25</td>
+                    </tr>
+                    <tr>
+                        <td class="columnlabel">Max Easting or Longitude</td><td class="datatext">141</td>
+                    </tr>
+                    <tr>
+                        <td class="columnlabel">Max Northing or Latitude</td><td class="datatext">-26</td>
+                    </tr>
+                </table>
+            </td>
+		</tr>
+	</table>
+
+        <table cellspacing="0" id="MainContent_fvDatasetStatus" style="border-collapse:collapse;">
+		<tr>
+			<td colspan="2">
+                <h4 class="divider">Dataset Status</h4>
+                <table>
+                    <tr>
+                        <td class="columnlabel">Initially Acquired</td><td class="datatext">01-JAN-1990</td>
+                    </tr>
+                    <tr>
+                        <td class="columnlabel">Last Updated</td><td class="datatext">CURRENT</td>
+                    </tr>
+                    <tr>
+                        <td class="columnlabel">Update Frequency</td><td class="datatext">Continual</td>
+                    </tr>
+                    <tr>
+                        <td class="columnlabel">Maintenance Method</td><td class="datatext">Public roads are generally updated dynamically through DCDB processes based on plans of subdivision. Private roads and tracks are maintained through region-based update programs by heads-up-digitising from orthophotography and integration of data from other sources. Major road alignments are maintained through DPTI business processes.</td>
+                    </tr>
+
+                    <tr>
+                        <td id="MainContent_fvDatasetStatus_Td2" class="columnlabel"></td>
+			<td class="datatext"></td>
+                    </tr>
+                    <tr>
+                        <td class="columnlabel">Licenseing</td><td class="datatext">CC BY    (Attribution)</td>
+                    </tr>
+                </table>
+            </td>
+		</tr>
+	</table>
+    
+        <h4 id="MainContent_lblAttHeader" class="divider">Attributes</h4>
+
+        <div>
+		<table class="table table-striped" cellspacing="0" rules="all" border="1" id="MainContent_gvAttributes" style="border-collapse:collapse;">
+			<tr>
+				<th scope="col">Table</th><th scope="col">Name</th><th scope="col">Field Alias</th><th scope="col">Data Type</th><th scope="col">Description</th>
+			</tr><tr>
+				<td>Roads</td><td>FeatureCode</td><td>&nbsp;</td><td>Long Integer</td><td>AS2482-based geographic feature description code</td>
+			</tr><tr>
+				<td>Roads</td><td>Name</td><td>&nbsp;</td><td>text</td><td>Road name</td>
+			</tr><tr>
+				<td>Roads</td><td>RoadType</td><td>&nbsp;</td><td>text</td><td>Descriptive component of road name, eg AVENUE</td>
+			</tr><tr>
+				<td>Roads</td><td>Class</td><td>&nbsp;</td><td>text</td><td>8 Level road function hierarchy classification</td>
+			</tr><tr>
+				<td>Roads</td><td>Surface</td><td>&nbsp;</td><td>text</td><td>Road surface type e.g. Sealed, Unsealed</td>
+			</tr><tr>
+				<td>Roads</td><td>RouteNum</td><td>&nbsp;</td><td>text</td><td>National / State route number</td>
+			</tr><tr>
+				<td>Roads</td><td>Status</td><td>&nbsp;</td><td>text</td><td>Road existence status ie Operational, Under Construction etc.</td>
+			</tr><tr>
+				<td>Roads</td><td>HorizontalAccuracy</td><td>&nbsp;</td><td>Double</td><td>Metadata: Horizontal accuracy in metres</td>
+			</tr><tr>
+				<td>Roads</td><td>OnType</td><td>&nbsp;</td><td>text</td><td>Road on bridge, in tunnel etc.</td>
+			</tr><tr>
+				<td>Roads</td><td>FA_Class</td><td>&nbsp;</td><td>Long Integer</td><td>Fire Access track classification eg. 1 Major, 2 Standard, 3 Minor, 4 Service</td>
+			</tr><tr>
+				<td>Roads</td><td>FA_Source</td><td>&nbsp;</td><td>Long Integer</td><td>Source of Fire Access class information eg. 1 DEW, 2 SA Water, 3 ForestrySA, 4 CFS</td>
+			</tr><tr>
+				<td>Roads</td><td>FA_AuditDate</td><td>&nbsp;</td><td>Date</td><td>Currency of Fire Access  class information (date of audit)</td>
+			</tr><tr>
+				<td>Roads</td><td>CaptureSource</td><td>&nbsp;</td><td>Long Integer</td><td>Metadata: Source mapping program</td>
+			</tr><tr>
+				<td>Roads</td><td>CaptureMethod</td><td>&nbsp;</td><td>Long Integer</td><td>Metadata: method of data capture ie digitized etc.</td>
+			</tr><tr>
+				<td>Roads</td><td>FeatureSource</td><td>&nbsp;</td><td>Long Integer</td><td>Metadata: information source used to identify feature</td>
+			</tr><tr>
+				<td>Roads</td><td>FeatureRelDate</td><td>&nbsp;</td><td>Date</td><td> Metadata: Currency of the feature / reference source currency </td>
+			</tr><tr>
+				<td>Roads</td><td>AttributeRelDate</td><td>&nbsp;</td><td>Date</td><td> Metadata: Currency of the attribute data </td>
+			</tr><tr>
+				<td>Roads</td><td>FA_Method</td><td>&nbsp;</td><td>Long Integer</td><td>Method of auditing Fire Access class information eg. 3 Desktop Audit, 2 Drive-through Audit, 1 Field Audit</td>
+			</tr><tr>
+				<td>Roads</td><td>TypeSuffix</td><td>&nbsp;</td><td>text</td><td>Suffix portion of road name, eg smith road EAST</td>
+			</tr><tr>
+				<td>Roads</td><td>FA_Status</td><td>&nbsp;</td><td>text</td><td>Status of Fire Access class information  eg. In Prep, Validated</td>
+			</tr><tr>
+				<td>Roads</td><td>FA_ValidationDate</td><td>&nbsp;</td><td>Date</td><td>Currency of Fire Access class information (date of sign-off)</td>
+			</tr><tr>
+				<td>Roads</td><td>RoadUseType</td><td>&nbsp;</td><td>Long Integer</td><td>Road User access type
+1 Public, 2 Authorised, 3 Private, 4 Restricted
+</td>
+			</tr><tr>
+				<td>Roads</td><td>RoadUseAuthority</td><td>&nbsp;</td><td>Long Integer</td><td> Maintenance authority or entity authorising user access
+1 LGA, 2 SAG: SA Water, 3 SAG: Forestry SA, 4 SAG: DEH, 5 Private: General, 6 FED: DPTI, 7 SAG: DPTI, 8 FED: Dept of Defence</td>
+			</tr><tr>
+				<td>Roads</td><td>Road_Id</td><td>&nbsp;</td><td>Long Integer</td><td> Link to Road Name Register </td>
+			</tr><tr>
+				<td>Roads</td><td>One_Way</td><td>&nbsp;</td><td>text</td><td>Indication of the direction of travel permitted along the road. (ie. two way or one way)</td>
+			</tr><tr>
+				<td>Roads</td><td>F_Elev</td><td>&nbsp;</td><td>short integer</td><td>Related to the start node to indicate a relative elevation in relation to connecting segments. Used to indicate a grade seperation at the end point. Connected segments with the same F_ELEV / T_ELEV at the point are at the same grade.</td>
+			</tr><tr>
+				<td>Roads</td><td>T_Elev</td><td>&nbsp;</td><td>short integer</td><td>Related to the start node to indicate a relative elevation in relation to connected segments. Used to indicate a grade seperation at the end point. Connected segments with the same F_ELEV / T_ELEV at the point are at the same grade.</td>
+			</tr><tr>
+				<td>Roads</td><td>CRRS_Road_No</td><td>&nbsp;</td><td>text</td><td>Unique identifier for a road as defined by DPTI for roads maintained by or of interest to DPTI</td>
+			</tr><tr>
+				<td>Roads</td><td>CWY_Code</td><td>&nbsp;</td><td>text</td><td>Side/ Carriageway for the designated road</td>
+			</tr><tr>
+				<td>Roads</td><td>Tars_Road_No</td><td>&nbsp;</td><td>text</td><td> Unique identifier for a road as defined by DPTI for recording crashes in Traffic Accident System </td>
+			</tr><tr>
+				<td>Roads</td><td>SuburbIdLeft</td><td>&nbsp;</td><td>Long Integer</td><td>Suburb to the left of the road segment</td>
+			</tr><tr>
+				<td>Roads</td><td>SuburbIdRight</td><td>&nbsp;</td><td>Long Integer</td><td>Suburb to the right of the road segment</td>
+			</tr><tr>
+				<td>Roads</td><td>PersistentID</td><td>&nbsp;</td><td>Long Integer</td><td>Unique feature identifier</td>
+			</tr>
+		</table>
+	</div>
+
+        <table cellspacing="0" id="MainContent_fvContact" style="border-collapse:collapse;">
+		<tr>
+			<td colspan="2">
+                <h4 class="divider">Contact Information</h4>
+                <table>
+                    <tr>
+                        <td class="columnlabel">Organisation</td><td class="datatext">Department for Environment and Water<BR>Information</td>
+                    </tr>
+                    <tr>
+                        <td class="columnlabel">Postal Address</td><td class="datatext">GPO Box 1047<BR> <BR/> ADELAIDE  <BR/> SA 5001</td>
+                    </tr>
+                    <tr>
+                        <td class="columnlabel">Email</td><td class="datatext">DEWNR.Mapland@sa.gov.au</td>
+                    </tr>
+                </table>
+            </td>
+		</tr>
+	</table>
+
+    
+</div>
+
+    
+
+
+            </div>
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div>&nbsp;</div>
+                          <p>This Metadata document has been delivered by the Location Metadata System (LMS) developed by Location SA.</p>
+                          <p>Retrieved on: 29/11/2022 </p>
+                          <p>Metadata URL: <a href="http://location.sa.gov.au/LMS/Reports/ReportMetadata.aspx?p_no=558&pu=y">http://location.sa.gov.au/LMS/Reports/ReportMetadata.aspx?p_no=558&pu=y </a></p>
+                          <p>This metadata report is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" title="Creative Commons License information">Creative Commons Attribution 4.0 Australia Licence</a>  
+                           <img id="ccLogo" src="../Images/icon_commons.png" alt="Creative Commons Licence" />
+								<p>Copyright in this information remains with the Crown in right of the State of South Australia and its licensors including but not limited to the Commonwealth of Australia. Information is not represented to be accurate, current, complete or suitable for any purpose, at the time of its supply and may have changed since the date of supply. No responsibility is accepted for any reliance placed by any person in the use of this information.<br />
+                                   <br />&copy; Copyright 2022 Location SA </p>
+                         </div>
+                    </div>
+                </div>
+            </footer>
+        
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="ABE23021" />
+</div></form>
+        <script src="Scripts/bootstrap.min.js" type="text/javascript"></script>
+    </body>
+
+</html>
